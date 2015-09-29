@@ -1,0 +1,2 @@
+SauceOnDemandSessionID=7900adefab18420ab821cda31223243d job-name=com.saucelabs.SampleSauceTest.amazon
+Job link: https://saucelabs.com/jobs/7900adefab18420ab821cda31223243d?auth=038b7296b3ce28d482fabdef96fa653f
