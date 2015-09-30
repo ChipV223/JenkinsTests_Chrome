@@ -186,7 +186,6 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
     	WebElement query = driver.findElement(By.name("q"));
         query.sendKeys("Sauce Labs");
         query.submit();*/
-        Thread.sleep(10000);
         //File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         // Now you can do whatever you need to do with it, for example copy somewhere
         //FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshot.png"));
