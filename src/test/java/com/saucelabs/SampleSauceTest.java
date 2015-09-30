@@ -162,6 +162,9 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
         caps.setCapability("name", name.getMethodName());
         caps.setCapability("public", "public");
         caps.setCapability("screenResolution", "1680x1050");
+        caps.setCapability("maxDuration", "300");
+        caps.setCapability("idleTimout", "120");
+        caps.setCapability("seleniumVersion", "2.46.0");
         this.driver = new RemoteWebDriver(
                 new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),caps);
         this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
@@ -177,30 +180,17 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
      */
     
     @Test
-    public void googleTest() throws Exception {
-    	driver.get("https://www.google.com/");
-    	assertEquals("Google", driver.getTitle());
+    public void test32077() throws Exception {
+    	driver.get("http://staging.build.com/index.cfm?page=ecrm:login");
+    	/*assertEquals("Google", driver.getTitle());
     	WebElement query = driver.findElement(By.name("q"));
         query.sendKeys("Sauce Labs");
-        query.submit();
+        query.submit();*/
         Thread.sleep(10000);
         //File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
         // Now you can do whatever you need to do with it, for example copy somewhere
         //FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshot.png"));
     }
-    
-    /*@Test
-    public void testGoogle2() throws Exception {
-    	this.testGoogle();
-    }
-    
-    @Test
-    public void testGoogle3() throws Exception {
-    	this.testGoogle();
-        WebElement query = driver.findElement(By.name("q"));
-        query.sendKeys("Sauce Labs");
-        query.submit();
-    }*/
 
     /**
      * Closes the {@link WebDriver} session.
