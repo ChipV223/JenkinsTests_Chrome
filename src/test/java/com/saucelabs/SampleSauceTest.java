@@ -182,6 +182,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
     @Test
     public void test32077() throws Exception {
     	driver.get("http://staging.build.com/index.cfm?page=ecrm:login");
+    	System.out.print(driver.getCurrentUrl());
     	/*assertEquals("Google", driver.getTitle());
     	WebElement query = driver.findElement(By.name("q"));
         query.sendKeys("Sauce Labs");
