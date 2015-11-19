@@ -161,10 +161,6 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
         //caps.setCapability(FirefoxDriver.PROFILE, profile);
         caps.setCapability("name", name.getMethodName());
         caps.setCapability("public", "public");
-        caps.setCapability("screenResolution", "1680x1050");
-        caps.setCapability("maxDuration", "300");
-        caps.setCapability("idleTimout", "120");
-        caps.setCapability("seleniumVersion", "2.46.0");
         this.driver = new RemoteWebDriver(
                 new URL("http://" + authentication.getUsername() + ":" + authentication.getAccessKey() + "@ondemand.saucelabs.com:80/wd/hub"),caps);
         this.sessionId = (((RemoteWebDriver) driver).getSessionId()).toString();
