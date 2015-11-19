@@ -124,10 +124,10 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
     @ConcurrentParameterized.Parameters
     public static LinkedList<String[]> browsersStrings() {
         LinkedList<String[]> browsers = new LinkedList<String[]>();
-        browsers.add(new String[]{"Windows 7", "42", "chrome"});
-        browsers.add(new String[]{"Windows 7", "43", "chrome"});
-        browsers.add(new String[]{"Windows 7", "44", "chrome"});
-        browsers.add(new String[]{"Windows 7", "45", "chrome"});
+        browsers.add(new String[]{"Windows 7", "46", "chrome"});
+        browsers.add(new String[]{"Windows 7", "9", "internet explorer"});
+        browsers.add(new String[]{"Windows 7", "10", "internet explorer"});
+        browsers.add(new String[]{"Windows 10", "11", "internet explorer"});
         return browsers;
     }
 
@@ -180,18 +180,13 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
      */
     
     @Test
-    public void test32077() throws Exception {
-    	driver.get("http://staging.build.com/index.cfm?page=ecrm:login");
-    	System.out.print(driver.getCurrentUrl());
-    	driver.findElement(By.name("login_email")).sendKeys("blah@blah.com");
-    	driver.findElement(By.name("login_password")).sendKeys("blahblah");
-    	/*assertEquals("Google", driver.getTitle());
-    	WebElement query = driver.findElement(By.name("q"));
-        query.sendKeys("Sauce Labs");
-        query.submit();*/
-        //File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
-        // Now you can do whatever you need to do with it, for example copy somewhere
-        //FileUtils.copyFile(scrFile, new File("c:\\tmp\\screenshot.png"));
+    public void test33542() throws Exception {
+    	driver.get("https://qwww302.americanexpress.com/gns/gnsonline/partner/un_login.do");
+    	Thread.sleep(5000);
+    	driver.findElement(By.id("userid")).sendKeys("Issacuser07");
+    	driver.findElement(By.id("pwd")).sendKeys("Macy2015");
+    	driver.findElement(By.name("submit")).submit();
+    	Thread.sleep(5000);
     }
 
     /**
