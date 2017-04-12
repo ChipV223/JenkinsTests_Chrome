@@ -95,6 +95,7 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
     @Rule
     public TestName name = new TestName();
     
+    public static String buildTag;
     private String pageSource;
     
 
@@ -141,20 +142,24 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
     public void setUp() throws Exception {
 
     	DesiredCapabilities caps = new DesiredCapabilities();
-    	ChromeOptions options = new ChromeOptions();
+    	//ChromeOptions options = new ChromeOptions();
     	//FirefoxProfile profile = new FirefoxProfile();
-        //caps.setCapability(CapabilityType.BROWSER_NAME, "chrome");
+        
     	caps.setCapability(CapabilityType.BROWSER_NAME, browser);
         if (version != null) {
             caps.setCapability(CapabilityType.VERSION, version);
         }
-        //caps.setCapability(CapabilityType.VERSION, "45");
+        
         caps.setCapability(CapabilityType.PLATFORM, os);
-        //caps.setCapability(CapabilityType.PLATFORM, "Windows 7");
+        
+	if(buildTag != null){
+        	caps.setCapability("build", buildTag);
+        }
+	 
         //profile.setPreference("intl.accept_languages", "es");
         //options.addArguments("--lang=es");
-        options.addArguments("--start-maximized");
-        caps.setCapability(ChromeOptions.CAPABILITY, options);
+        //options.addArguments("--start-maximized");
+        //caps.setCapability(ChromeOptions.CAPABILITY, options);
     	//caps.setCapability("version", "39.0");
         //caps.setCapability("platform", "Windows 7");
         //caps.setCapability(FirefoxDriver.PROFILE, profile);
@@ -175,13 +180,17 @@ public class SampleSauceTest implements SauceOnDemandSessionIdProvider {
      */
     
     @Test
-    public void test33542() throws Exception {
-    	driver.get("https://qwww302.americanexpress.com/gns/gnsonline/partner/un_login.do");
+    public void testGoogle() throws Exception {
+    	driver.get("https://google.com");  	
+    	String url = driver.getCurrentUrl();
+    	assertEquals("Google", driver.getTitle());
+    	//File scrFile = ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+    	WebElement query = driver.findElement(By.name("q"));
+    	query.sendKeys("Sauce Labs");
     	Thread.sleep(5000);
-    	driver.findElement(By.id("userid")).sendKeys("Issacuser07");
-    	driver.findElement(By.id("pwd")).sendKeys("Macy2015");
-    	driver.findElement(By.name("submit")).submit();
-    	Thread.sleep(5000);
+    	JavascriptExecutor executor = (JavascriptExecutor)driver;
+    	executor.executeScript("arguments[0].click();", query);
+        Thread.sleep(5000);
     }
 
     /**
